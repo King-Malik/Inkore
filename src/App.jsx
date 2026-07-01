@@ -2643,93 +2643,94 @@ export default function Inkore() {
                 <div style={{fontSize:FONT.body}}>{s.emP}</div>
               </div>
             ):(
-              <div style={{display:"flex",flexDirection:"column",gap:isMobile?8:9}}>
-                {displayed.map(p=>{
+              <div style={{display:"flex",flexDirection:"column"}}>
+                {displayed.map((p,idx)=>{
                   const ci=CATS[p.category]||CATS["عام"];
                   const resp=getResp(p);
                   const commentCount=(p.comments||[]).length;
                   const replyCount=(p.comments||[]).reduce((a,c)=>a+(c.replies||[]).length,0);
                   const flagCount=(p.votes?.flaggedBy||[]).length;
+                  const isLast=idx===displayed.length-1;
                   return(
                     <div key={p.id} data-pressable="card" onClick={()=>openThread(p.id)}
-                      style={{...cardStyle,boxShadow:glow(p.votes),
-                        cursor:"pointer",opacity:flagCount>1?0.6:1,
+                      style={{cursor:"pointer",opacity:flagCount>1?0.6:1,
                         WebkitTapHighlightColor:"transparent",
-                        // موضع نسبي + z-index مرتفع مؤقتاً فقط عندما تكون قائمة ⋯
-                        // الخاصة بهذا الكرت مفتوحة — بدونه كانت القائمة (absolute
-                        // بداخل الكرت) تختفي بصرياً خلف الكرت التالي بالفيد لأن كل
-                        // الكروت تشترك نفس مستوى التكديس الافتراضي بالـ DOM.
+                        display:"flex",gap:11,
+                        padding:isMobile?"14px 2px":"15px 4px",
+                        borderBottom:isLast?"none":BORDERS.default,
                         position:"relative",
                         zIndex:openMenuFor===`post-${p.id}`?60:"auto",
-                        // أثناء انتظار اكتمال حركة الضغط (قبل فتح الثريد فعلياً)
-                        // نُبقي الكرت بحالة "مضغوط" يدوياً، بدل ما يرتد لحجمه
-                        // الطبيعي فجأة قبل الانتقال — استمرارية بصرية كاملة
                         transform:threadPending===p.id?"scale(0.988)":"scale(1)",
                         transition:threadPending===p.id ? TRANSITIONS.press : TRANSITIONS.colorChange,
-                        // will-change يخبر المتصفح مسبقاً إن transform هذا
-                        // العنصر راح يتغيّر، فيجهّز له طبقة GPU منفصلة قبل
-                        // وقوع الحركة بدل ما "يتفاجأ" بها وقت الضغط — هذا
-                        // يلغي أي تقطيع (jank) خصوصاً بصفحة فيها عشرات الكروت
                         willChange:"transform"}}>
 
-                      <div style={{display:"flex",justifyContent:"space-between",
-                        alignItems:"flex-start",marginBottom:10,flexWrap:"wrap",gap:6}}>
-                        <span style={{background:ci.bg,color:ci.color,
-                          padding:"3px 10px",borderRadius:RADIUS.pill,fontSize:FONT.caption,fontWeight:700,flexShrink:0}}>
-                          {s.cat(p.category)}
-                        </span>
-                        <div style={{display:"flex",alignItems:"center",gap:R.gap,flexWrap:"wrap"}}>
-                          {p.edited&&<span style={{fontSize:FONT.micro,color:CL.textMuted,fontStyle:"italic"}}>✏️ {s.editedLabel}</span>}
-                          {flagCount>0&&<span style={{fontSize:FONT.micro,color:CL.flag}}>🚩 {flagCount}</span>}
-                          <span style={{fontSize:R.metaFont,color:CL.textMuted}}>{timeAgo(p.timestamp,s)}</span>
+                      {/* أفاتار دائري بنمط Threads — حرف التصنيف الأول داخل
+                          دائرة ملونة حسب لون التصنيف، بدل صورة بروفايل حقيقية
+                          (المنشورات مجهولة الهوية) */}
+                      <div style={{flexShrink:0,width:isMobile?36:38,height:isMobile?36:38,
+                        borderRadius:RADIUS.circle,background:ci.bg,
+                        display:"flex",alignItems:"center",justifyContent:"center",
+                        fontSize:FONT.heading,fontWeight:800,color:ci.color}}>
+                        {s.cat(p.category)?.trim()?.charAt(0)||"•"}
+                      </div>
+
+                      <div style={{flex:1,minWidth:0}}>
+                        <div style={{display:"flex",justifyContent:"space-between",
+                          alignItems:"flex-start",marginBottom:3,flexWrap:"wrap",gap:6}}>
+                          <div style={{display:"flex",alignItems:"center",gap:6,flexWrap:"wrap"}}>
+                            <span style={{color:ci.color,fontWeight:700,fontSize:R.bodyText}}>
+                              {s.cat(p.category)}
+                            </span>
+                            <span style={{fontSize:R.metaFont,color:CL.textMuted}}>· {timeAgo(p.timestamp,s)}</span>
+                            {p.edited&&<span style={{fontSize:FONT.micro,color:CL.textMuted,fontStyle:"italic"}}>✏️ {s.editedLabel}</span>}
+                            {flagCount>0&&<span style={{fontSize:FONT.micro,color:CL.flag}}>🚩 {flagCount}</span>}
+                          </div>
                           <ActionMenuButton menuKey={`post-${p.id}`} text={p.text}
                             isOwner={!!ownedPosts[p.id]}
                             onEdit={()=>{setEditingPostId(p.id);setEditPostText(p.text);}}
                             onDelete={()=>deletePost(p.id)}/>
                         </div>
-                      </div>
 
-                      {editingPostId===p.id?(
-                        <div style={{marginBottom:12}} onClick={e=>e.stopPropagation()}>
-                          <textarea value={editPostText} onChange={e=>setEditPostText(e.target.value)}
-                            maxLength={300} autoFocus
-                            style={{...inputBase,width:"100%",minHeight:80,resize:"none",
-                              border:BORDERS.edit,fontSize:R.textareaFont}}/>
-                          {err&&<div style={{color:"#D07070",fontSize:FONT.caption,marginTop:4,wordBreak:"break-word"}}>{err}</div>}
-                          <div style={{display:"flex",gap:6,marginTop:8,flexWrap:"wrap"}}>
-                            <button onClick={()=>saveEditPost(p.id)} style={btnPrimary}>{s.editSave}</button>
-                            <button onClick={cancelEdit} style={btnSecondary}>{s.editCancel}</button>
+                        {editingPostId===p.id?(
+                          <div style={{marginBottom:12}} onClick={e=>e.stopPropagation()}>
+                            <textarea value={editPostText} onChange={e=>setEditPostText(e.target.value)}
+                              maxLength={300} autoFocus
+                              style={{...inputBase,width:"100%",minHeight:80,resize:"none",
+                                border:BORDERS.edit,fontSize:R.textareaFont}}/>
+                            {err&&<div style={{color:"#D07070",fontSize:FONT.caption,marginTop:4,wordBreak:"break-word"}}>{err}</div>}
+                            <div style={{display:"flex",gap:6,marginTop:8,flexWrap:"wrap"}}>
+                              <button onClick={()=>saveEditPost(p.id)} style={btnPrimary}>{s.editSave}</button>
+                              <button onClick={cancelEdit} style={btnSecondary}>{s.editCancel}</button>
+                            </div>
                           </div>
-                        </div>
-                      ):(
-                        <>
-                          <p style={{margin:"0 0 10px",fontSize:R.bodyText,lineHeight:1.78,
-                            color:CL.text,wordBreak:"break-word"}}>{p.text}</p>
-                          {p.mdFile&&mdBadge(p.mdFile,`feed-${p.id}`)}
-                        </>
-                      )}
+                        ):(
+                          <>
+                            <p style={{margin:"0 0 8px",fontSize:R.bodyText,lineHeight:1.7,
+                              color:CL.text,wordBreak:"break-word"}}>{p.text}</p>
+                            {p.mdFile&&mdBadge(p.mdFile,`feed-${p.id}`)}
+                          </>
+                        )}
 
-                      {resp?.trim()&&(
-                        <div style={{borderInlineStart:`3px solid ${ci.color}`,paddingInlineStart:10,
-                          paddingTop:4,paddingBottom:4,marginBottom:12,
-                          fontSize:FONT.label,color:CL.textSub,fontStyle:"italic",wordBreak:"break-word"}}>
-                          📝 {resp}
-                        </div>
-                      )}
+                        {resp?.trim()&&(
+                          <div style={{borderInlineStart:`3px solid ${ci.color}`,paddingInlineStart:10,
+                            paddingTop:4,paddingBottom:4,marginBottom:10,
+                            fontSize:FONT.label,color:CL.textSub,fontStyle:"italic",wordBreak:"break-word"}}>
+                            📝 {resp}
+                          </div>
+                        )}
 
-                      <div style={{display:"flex",justifyContent:"space-between",
-                        alignItems:"center",flexWrap:"wrap",gap:8}}>
-                        {reactionRow(p.id,null,p.votes)}
-                        <button onClick={e=>{e.stopPropagation();openThread(p.id);}}
-                          style={{...btn0,display:"flex",alignItems:"center",gap:5,
-                            background:CL.borderFaint,border:BORDERS.default,
-                            borderRadius:RADIUS.pillLg,padding:isMobile?"7px 10px":"5px 9px",
-                            color:CL.textMuted,fontSize:FONT.caption,fontWeight:700,
-                            minHeight:isMobile?36:"auto"}}>
-                          <span>💬</span>
-                          {commentCount>0&&<span>{commentCount}</span>}
-                          {replyCount>0&&<span style={{color:CL.reply}}>↩{replyCount}</span>}
-                        </button>
+                        <div style={{display:"flex",alignItems:"center",gap:14,marginTop:4}}>
+                          {reactionRow(p.id,null,p.votes)}
+                          <button onClick={e=>{e.stopPropagation();openThread(p.id);}}
+                            style={{...btn0,display:"flex",alignItems:"center",gap:5,
+                              background:"transparent",border:"none",padding:isMobile?"7px 4px":"5px 2px",
+                              color:CL.textMuted,fontSize:FONT.caption,fontWeight:700,
+                              minHeight:isMobile?36:"auto"}}>
+                            <span>💬</span>
+                            {commentCount>0&&<span>{commentCount}</span>}
+                            {replyCount>0&&<span style={{color:CL.reply}}>↩{replyCount}</span>}
+                          </button>
+                        </div>
                       </div>
                     </div>
                   );
