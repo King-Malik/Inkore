@@ -30,6 +30,85 @@
 import { useState, useEffect, useRef } from "react";
 
 /* ┌──────────────────────────────────────────────────────────────────────┐
+   │ أيقونات SVG — بديل مرسوم يدوياً لكل الإيموجي الوظيفية بالموقع.       │
+   │ كل أيقونة مكوّن صغير يقبل size/color/strokeWidth عبر props، بدون أي  │
+   │ اعتماد على مكتبة خارجية (lucide/react-icons) — أقرب لخط lucide شكلاً │
+   │ (stroke فقط، بلا تعبئة) حتى تنسجم بصرياً مع بعضها.                   │
+   └──────────────────────────────────────────────────────────────────────┘ */
+const svgBase = (size, color, strokeWidth) => ({
+  width: size, height: size, viewBox: "0 0 24 24", fill: "none",
+  stroke: color, strokeWidth, strokeLinecap: "round", strokeLinejoin: "round",
+});
+
+const IconThumbsUp = ({ size = 15, color = "currentColor", strokeWidth = 2 }) => (
+  <svg {...svgBase(size, color, strokeWidth)}>
+    <path d="M7 10v11" /><path d="M11 21h6.5a2 2 0 0 0 2-1.6l1.2-7A2 2 0 0 0 18.7 10H14V5a2 2 0 0 0-2-2l-3 7v11Z" />
+  </svg>
+);
+const IconHandshake = ({ size = 15, color = "currentColor", strokeWidth = 2 }) => (
+  <svg {...svgBase(size, color, strokeWidth)}>
+    <path d="m11 17 2 2a1 1 0 1 0 3-3" /><path d="m14 14 2.5 2.5a1 1 0 1 0 3-3l-3.88-3.88a3 3 0 0 0-4.24 0l-.88.88a1 1 0 1 1-3-3l2.81-2.81a5.79 5.79 0 0 1 7.06-.87l.47.28a2 2 0 0 0 1.42.25L21 4" />
+    <path d="m21 3 1 11h-2" /><path d="M3 3 2 14l6.5 6.5a1 1 0 1 0 3-3" /><path d="M3 4h8" />
+  </svg>
+);
+const IconHeart = ({ size = 15, color = "currentColor", strokeWidth = 2, filled = false }) => (
+  <svg {...svgBase(size, color, strokeWidth)} fill={filled ? color : "none"}>
+    <path d="M19 14c1.49-1.46 3-3.21 3-5.5A5.5 5.5 0 0 0 16.5 3c-1.76 0-3 .5-4.5 2-1.5-1.5-2.74-2-4.5-2A5.5 5.5 0 0 0 2 8.5c0 2.3 1.5 4.05 3 5.5l7 7Z" />
+  </svg>
+);
+const IconSparkles = ({ size = 15, color = "currentColor", strokeWidth = 2 }) => (
+  <svg {...svgBase(size, color, strokeWidth)}>
+    <path d="M9.937 15.5A2 2 0 0 0 8.5 14.063l-6.135-1.582a.5.5 0 0 1 0-.962L8.5 9.936A2 2 0 0 0 9.937 8.5l1.582-6.135a.5.5 0 0 1 .963 0L14.063 8.5A2 2 0 0 0 15.5 9.937l6.135 1.581a.5.5 0 0 1 0 .964L15.5 14.063a2 2 0 0 0-1.437 1.437l-1.582 6.135a.5.5 0 0 1-.963 0z" />
+    <path d="M20 3v4" /><path d="M22 5h-4" /><path d="M4 17v2" /><path d="M5 18H3" />
+  </svg>
+);
+const IconFlag = ({ size = 15, color = "currentColor", strokeWidth = 2 }) => (
+  <svg {...svgBase(size, color, strokeWidth)}>
+    <path d="M4 15s1-1 4-1 5 2 8 2 4-1 4-1V3s-1 1-4 1-5-2-8-2-4 1-4 1z" /><path d="M4 22v-7" />
+  </svg>
+);
+const IconMessageCircle = ({ size = 15, color = "currentColor", strokeWidth = 2 }) => (
+  <svg {...svgBase(size, color, strokeWidth)}>
+    <path d="M7.9 20A9 9 0 1 0 4 16.1L2 22Z" />
+  </svg>
+);
+const IconReply = ({ size = 15, color = "currentColor", strokeWidth = 2 }) => (
+  <svg {...svgBase(size, color, strokeWidth)}>
+    <polyline points="9 17 4 12 9 7" /><path d="M20 18v-2a4 4 0 0 0-4-4H4" />
+  </svg>
+);
+const IconPencil = ({ size = 13, color = "currentColor", strokeWidth = 2 }) => (
+  <svg {...svgBase(size, color, strokeWidth)}>
+    <path d="M17 3a2.85 2.83 0 1 1 4 4L7.5 20.5 2 22l1.5-5.5Z" /><path d="m15 5 4 4" />
+  </svg>
+);
+const IconTrash = ({ size = 13, color = "currentColor", strokeWidth = 2 }) => (
+  <svg {...svgBase(size, color, strokeWidth)}>
+    <path d="M3 6h18" /><path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6" />
+    <path d="M8 6V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2" />
+  </svg>
+);
+const IconArrowRight = ({ size = 16, color = "currentColor", strokeWidth = 2.2 }) => (
+  <svg {...svgBase(size, color, strokeWidth)}>
+    <path d="M5 12h14" /><path d="m12 5 7 7-7 7" />
+  </svg>
+);
+const IconLock = ({ size = 12, color = "currentColor", strokeWidth = 2 }) => (
+  <svg {...svgBase(size, color, strokeWidth)}>
+    <rect x="3" y="11" width="18" height="11" rx="2" ry="2" /><path d="M7 11V7a5 5 0 0 1 10 0v4" />
+  </svg>
+);
+const IconUnlock = ({ size = 14, color = "currentColor", strokeWidth = 2 }) => (
+  <svg {...svgBase(size, color, strokeWidth)}>
+    <rect x="3" y="11" width="18" height="11" rx="2" ry="2" /><path d="M7 11V7a5 5 0 0 1 9.9-1" />
+  </svg>
+);
+const REACTION_ICONS = {
+  helpful: IconThumbsUp, agree: IconHandshake, relatable: IconHeart,
+  inspiring: IconSparkles, flag: IconFlag,
+};
+
+/* ┌──────────────────────────────────────────────────────────────────────┐
    │ الطابق 0 — STORAGE KEYS                                              │
    └──────────────────────────────────────────────────────────────────────┘ */
 const POSTS_KEY          = "inkore-posts-v5";
@@ -874,6 +953,9 @@ export default function Inkore() {
   // حالياً بدل حالة منفصلة لكل منشور/تعليق/رد — قائمة واحدة بالشاشة كحد أقصى.
   // type: "post" | "comment" | "reply"
   const [openMenuFor,setOpenMenuFor]=useState(null); // {type, postId, commentId?, replyId?} | null
+  // ── يتتبع أي بطاقة منشور بالفيد يمرّ الفأرة فوقها حالياً — خلفية hover
+  // خفيفة بنمط Threads (mouse فقط؛ لا يُفعَّل باللمس فلا يزعج الموبايل)
+  const [hoveredPostId,setHoveredPostId]=useState(null);
   const [loading,setLoading]=useState(true);
   // ── مؤشرات "جاري الإرسال" لكل نوع محتوى — تعطّل الزر وتغيّر نصه أثناء العملية
   const [isPosting,setIsPosting]=useState(false);
@@ -1253,7 +1335,10 @@ export default function Inkore() {
         borderRadius:RADIUS.lg,padding:isMobile?"11px 16px":"8px 14px",
         color:CL.accent,fontSize:FONT.body,fontWeight:700,
         minHeight:isMobile?44:"auto",display:"inline-flex",alignItems:"center",gap:6}}>
-      <span style={{fontSize:FONT.subhead,lineHeight:1}}>{s.d==="rtl"?"→":"←"}</span>
+      <span style={{lineHeight:1,display:"flex",
+        transform:s.d==="rtl"?"none":"scaleX(-1)" /* نفس أيقونة السهم، بانعكاس أفقي حسب اتجاه اللغة بدل رسم نسختين */}}>
+        <IconArrowRight size={16} color={CL.accent}/>
+      </span>
       {label&&<span>{label}</span>}
     </button>
   );
@@ -1265,6 +1350,8 @@ export default function Inkore() {
         const byKey=r.key==="flag"?"flaggedBy":`${r.key}By`;
         const hasVoted=(votes?.[byKey]||[]).includes(deviceHash);
         const count=votes?.[r.key]||0;
+        const Icon=REACTION_ICONS[r.key];
+        const iconColor=hasVoted?(r.isModeration?CL.flag:CL.accent):CL.textMuted;
         return(
           <button key={r.key}
             onClick={e=>{e.stopPropagation();updateVotes(postId,commentId,r.key);}}
@@ -1273,10 +1360,12 @@ export default function Inkore() {
               background:hasVoted?(r.isModeration?CL.flagDim:CL.accentDim):CL.borderFaint,
               border:hasVoted?(r.isModeration?BORDERS.flag:BORDERS.accent):BORDERS.default,
               borderRadius:RADIUS.pill,padding:R.reactionPad,minHeight:isMobile?36:"auto",
-              color:hasVoted?(r.isModeration?CL.flag:CL.accent):CL.textMuted,
+              color:iconColor,
               fontSize:R.reactionFontSize,fontWeight:700,transition:TRANSITIONS.colorChange,
             }}>
-            <span style={{lineHeight:1}}>{r.emoji}</span>
+            <span style={{lineHeight:1,display:"flex"}}>
+              <Icon size={14} color={iconColor} filled={r.key==="relatable"&&hasVoted}/>
+            </span>
             {count>0&&<span>{count}</span>}
           </button>
         );
@@ -1573,13 +1662,13 @@ export default function Inkore() {
                   style={{...btn0,display:"flex",alignItems:"center",gap:8,width:"100%",
                     textAlign:s.d==="rtl"?"right":"left",background:"none",border:"none",
                     padding:"10px 14px",color:CL.edit,fontSize:FONT.body,fontWeight:600}}>
-                  ✏️ {s.actionEdit}
+                  <IconPencil size={13} color={CL.edit}/> {s.actionEdit}
                 </button>
                 <button onClick={()=>{onDelete();setOpenMenuFor(null);}}
                   style={{...btn0,display:"flex",alignItems:"center",gap:8,width:"100%",
                     textAlign:s.d==="rtl"?"right":"left",background:"none",border:"none",
                     padding:"10px 14px",color:CL.danger,fontSize:FONT.body,fontWeight:600}}>
-                  🗑️ {s.actionDelete}
+                  <IconTrash size={13} color={CL.danger}/> {s.actionDelete}
                 </button>
               </>
             )}
@@ -1973,7 +2062,8 @@ export default function Inkore() {
                   borderRadius:RADIUS.md,padding:isMobile?"13px 14px":"11px 14px",
                   color:CL.danger,fontSize:FONT.body,fontWeight:700,
                   minHeight:isMobile?46:"auto"}}>
-                🗑️ {s.deleteContentBtn}
+                <span style={{display:"inline-flex",verticalAlign:"middle",marginInlineEnd:6}}><IconTrash size={14} color={CL.danger}/></span>
+                {s.deleteContentBtn}
               </button>
               <button onClick={confirmPurgeOwnershipOnly}
                 style={{...btn0,textAlign:s.d==="rtl"?"right":"left",
@@ -1981,7 +2071,8 @@ export default function Inkore() {
                   borderRadius:RADIUS.md,padding:isMobile?"13px 14px":"11px 14px",
                   color:CL.flag,fontSize:FONT.body,fontWeight:700,
                   minHeight:isMobile?46:"auto"}}>
-                🔓 {s.deleteOwnershipBtn}
+                <span style={{display:"inline-flex",verticalAlign:"middle",marginInlineEnd:6}}><IconUnlock size={14} color={CL.flag}/></span>
+                {s.deleteOwnershipBtn}
               </button>
             </div>
           </div>
@@ -2076,7 +2167,7 @@ export default function Inkore() {
                           display:"-webkit-box",WebkitLineClamp:3,WebkitBoxOrient:"vertical",
                           overflow:"hidden"}}>{p.text}</p>
                         <div style={{display:"flex",alignItems:"center",gap:6,color:CL.textMuted,fontSize:FONT.caption}}>
-                          <span>💬</span><span>{commentCount}</span>
+                          <span style={{display:"flex"}}><IconMessageCircle size={13} color={CL.textMuted}/></span><span>{commentCount}</span>
                         </div>
                       </div>
                     );
@@ -2246,57 +2337,78 @@ export default function Inkore() {
 
             {/* Post card */}
             {activePost&&(
-              <div style={{...cardStyle,marginBottom:14}}>
-                {/* Meta row */}
-                <div style={{display:"flex",justifyContent:"space-between",
-                  alignItems:"flex-start",marginBottom:10,gap:6,flexWrap:"wrap"}}>
-                  <span style={{background:CATS[activePost.category]?.bg,color:CATS[activePost.category]?.color,
-                    padding:"3px 10px",borderRadius:RADIUS.pill,fontSize:FONT.caption,fontWeight:700,flexShrink:0}}>
-                    {s.cat(activePost.category)}
-                  </span>
-                  <div style={{display:"flex",alignItems:"center",gap:R.gap,flexWrap:"wrap"}}>
-                    {activePost.edited&&<span style={{fontSize:FONT.micro,color:CL.textMuted,fontStyle:"italic"}}>✏️ {s.editedLabel}</span>}
-                    <span style={{fontSize:R.metaFont,color:CL.textMuted}}>{timeAgo(activePost.timestamp,s)}</span>
+              <div style={{display:"flex",gap:11,marginBottom:6,position:"relative"}}>
+                {/* أفاتار المنشور الرئيسي — أكبر قليلاً من أفاتار الفيد،
+                    ومنه ينزل خط عمودي رفيع يربطه بقسم التعليقات أسفله
+                    (نفس فكرة "الخيط" المرئي بتطبيق Threads) */}
+                <div style={{flexShrink:0,display:"flex",flexDirection:"column",alignItems:"center"}}>
+                  <div style={{width:isMobile?40:42,height:isMobile?40:42,
+                    borderRadius:RADIUS.circle,background:CATS[activePost.category]?.bg,
+                    display:"flex",alignItems:"center",justifyContent:"center",
+                    fontSize:FONT.title,fontWeight:800,color:CATS[activePost.category]?.color,
+                    flexShrink:0}}>
+                    {s.cat(activePost.category)?.trim()?.charAt(0)||"•"}
+                  </div>
+                  {/* الخط العمودي — يمتد بالـ flex ليملأ الفراغ حتى أول تعليق،
+                      يختفي تلقائياً إن لم توجد تعليقات (flex:1 على حاوية فارغة
+                      الارتفاع لا يُظهر شيئاً) */}
+                  {(activePost.comments||[]).length>0&&(
+                    <div style={{width:2,flex:1,minHeight:20,background:CL.borderFaint,marginTop:6}}/>
+                  )}
+                </div>
+
+                <div style={{flex:1,minWidth:0}}>
+                  {/* Meta row */}
+                  <div style={{display:"flex",justifyContent:"space-between",
+                    alignItems:"flex-start",marginBottom:6,gap:6,flexWrap:"wrap"}}>
+                    <div style={{display:"flex",alignItems:"center",gap:6,flexWrap:"wrap"}}>
+                      <span style={{color:CATS[activePost.category]?.color,fontWeight:700,fontSize:R.bodyText}}>
+                        {s.cat(activePost.category)}
+                      </span>
+                      <span style={{fontSize:R.metaFont,color:CL.textMuted}}>· {timeAgo(activePost.timestamp,s)}</span>
+                      {activePost.edited&&<span style={{fontSize:FONT.micro,color:CL.textMuted,fontStyle:"italic",display:"inline-flex",alignItems:"center",gap:3}}><IconPencil size={9} color={CL.textMuted}/> {s.editedLabel}</span>}
+                    </div>
                     <ActionMenuButton menuKey={`post-${activePost.id}`} text={activePost.text}
                       isOwner={!!ownedPosts[activePost.id]}
                       onEdit={()=>{setEditingPostId(activePost.id);setEditPostText(activePost.text);}}
                       onDelete={()=>deletePost(activePost.id)}/>
                   </div>
-                </div>
 
-                {editingPostId===activePost.id?(
-                  <div style={{marginBottom:12}}>
-                    <textarea value={editPostText} onChange={e=>setEditPostText(e.target.value)}
-                      maxLength={300} autoFocus
-                      style={{...inputBase,width:"100%",minHeight:80,resize:"none",
-                        border:BORDERS.edit,fontSize:R.textareaFont}}/>
-                    {err&&<div style={{color:"#D07070",fontSize:FONT.caption,marginTop:4,wordBreak:"break-word"}}>{err}</div>}
-                    <div style={{display:"flex",gap:6,marginTop:8,flexWrap:"wrap"}}>
-                      <button onClick={()=>saveEditPost(activePost.id)} style={btnPrimary}>{s.editSave}</button>
-                      <button onClick={cancelEdit} style={btnSecondary}>{s.editCancel}</button>
+                  {editingPostId===activePost.id?(
+                    <div style={{marginBottom:12}}>
+                      <textarea value={editPostText} onChange={e=>setEditPostText(e.target.value)}
+                        maxLength={300} autoFocus
+                        style={{...inputBase,width:"100%",minHeight:80,resize:"none",
+                          border:BORDERS.edit,fontSize:R.textareaFont}}/>
+                      {err&&<div style={{color:"#D07070",fontSize:FONT.caption,marginTop:4,wordBreak:"break-word"}}>{err}</div>}
+                      <div style={{display:"flex",gap:6,marginTop:8,flexWrap:"wrap"}}>
+                        <button onClick={()=>saveEditPost(activePost.id)} style={btnPrimary}>{s.editSave}</button>
+                        <button onClick={cancelEdit} style={btnSecondary}>{s.editCancel}</button>
+                      </div>
                     </div>
-                  </div>
-                ):(
-                  <>
-                    <p style={{margin:"0 0 10px",fontSize:R.bodyText,lineHeight:1.78,
-                      color:CL.text,wordBreak:"break-word"}}>{activePost.text}</p>
-                    {activePost.mdFile&&mdBadge(activePost.mdFile,`post-${activePost.id}`)}
-                  </>
-                )}
+                  ):(
+                    <>
+                      <p style={{margin:"0 0 10px",fontSize:R.bodyText,lineHeight:1.78,
+                        color:CL.text,wordBreak:"break-word"}}>{activePost.text}</p>
+                      {activePost.mdFile&&mdBadge(activePost.mdFile,`post-${activePost.id}`)}
+                    </>
+                  )}
 
-                {activePost.note&&(
-                  <div style={{borderInlineStart:`3px solid ${CATS[activePost.category]?.color}`,
-                    paddingInlineStart:10,paddingTop:4,paddingBottom:4,marginBottom:12,
-                    fontSize:FONT.label,color:CL.textSub,fontStyle:"italic",wordBreak:"break-word"}}>
-                    📝 {activePost.note}
-                  </div>
-                )}
-                {reactionRow(activePost.id,null,activePost.votes)}
+                  {activePost.note&&(
+                    <div style={{borderInlineStart:`3px solid ${CATS[activePost.category]?.color}`,
+                      paddingInlineStart:10,paddingTop:4,paddingBottom:4,marginBottom:12,
+                      fontSize:FONT.label,color:CL.textSub,fontStyle:"italic",wordBreak:"break-word"}}>
+                      📝 {activePost.note}
+                    </div>
+                  )}
+                  {reactionRow(activePost.id,null,activePost.votes)}
+                </div>
               </div>
             )}
 
-            {/* Comments section */}
-            <div style={{...cardStyle,marginBottom:14}}>
+            {/* Comments section — بدون بطاقة/حدود منفصلة، امتداد طبيعي
+                لنفس "الخيط" العمودي النازل من أفاتار المنشور أعلاه */}
+            <div style={{marginBottom:14}}>
               <h3 style={{margin:"0 0 12px",fontSize:FONT.bodyLg,fontWeight:700,color:CL.accent}}>{s.commentsTitle}</h3>
 
               {/* Comment input */}
@@ -2336,137 +2448,154 @@ export default function Inkore() {
               {(activePost?.comments||[]).length===0?(
                 <div style={{color:CL.textMuted,fontSize:FONT.label,textAlign:"center",padding:"12px 0"}}>{s.noComments}</div>
               ):(
-                <div style={{display:"flex",flexDirection:"column",gap:12}}>
-                  {(activePost?.comments||[]).map(c=>{
+                <div style={{display:"flex",flexDirection:"column"}}>
+                  {(activePost?.comments||[]).map((c,cIdx)=>{
                     const replies=c.replies||[];
                     const isExpanded=expandedIds[c.id];
                     const isReplying=replyingToId===c.id;
+                    const showThread=isExpanded||isReplying;
+                    const isLastComment=cIdx===(activePost?.comments||[]).length-1;
 
                     return(
                       <div key={c.id} style={{position:"relative",
-                        zIndex:openMenuFor===`comment-${c.id}`?60:"auto"}}>
-                        {/* Comment card */}
-                        <div style={{background:"rgba(0,0,0,0.2)",borderRadius:isMobile?10:12,padding:isMobile?"10px 12px":"10px 12px"}}>
-                          <div style={{display:"flex",justifyContent:"space-between",
-                            alignItems:"flex-start",marginBottom:6,gap:6}}>
-                            <span style={{fontSize:FONT.caption,color:CL.textMuted,fontWeight:700}}>🔒</span>
-                            <div style={{display:"flex",alignItems:"center",gap:R.gap,flexWrap:"wrap"}}>
-                              {c.edited&&<span style={{fontSize:FONT.micro,color:CL.textMuted,fontStyle:"italic"}}>✏️ {s.editedLabel}</span>}
-                              <span style={{fontSize:R.metaFont,color:CL.textMuted}}>{timeAgo(c.timestamp,s)}</span>
+                        zIndex:openMenuFor===`comment-${c.id}`?60:"auto",
+                        borderBottom:isLastComment?"none":`1px solid ${CL.borderFaint}`,
+                        paddingBottom:12,marginBottom:12}}>
+                        {/* Comment row — أفاتار دائري صغير + خط عمودي رفيع
+                            ينزل نحو الردود أسفله (بنمط Threads)، بدل بطاقة
+                            بخلفية داكنة منفصلة */}
+                        <div style={{display:"flex",gap:9}}>
+                          <div style={{flexShrink:0,display:"flex",flexDirection:"column",alignItems:"center"}}>
+                            <div style={{width:26,height:26,borderRadius:RADIUS.circle,
+                              background:CL.borderFaint,display:"flex",alignItems:"center",
+                              justifyContent:"center",flexShrink:0}}>
+                              <IconLock size={11} color={CL.textMuted}/>
+                            </div>
+                            {showThread&&(
+                              <div style={{width:2,flex:1,minHeight:16,background:CL.replyBorder,marginTop:6}}/>
+                            )}
+                          </div>
+
+                          <div style={{flex:1,minWidth:0}}>
+                            <div style={{display:"flex",justifyContent:"space-between",
+                              alignItems:"flex-start",marginBottom:4,gap:6}}>
+                              <div style={{display:"flex",alignItems:"center",gap:R.gap,flexWrap:"wrap"}}>
+                                <span style={{fontSize:R.metaFont,color:CL.textMuted}}>{timeAgo(c.timestamp,s)}</span>
+                                {c.edited&&<span style={{fontSize:FONT.micro,color:CL.textMuted,fontStyle:"italic",display:"inline-flex",alignItems:"center",gap:3}}><IconPencil size={9} color={CL.textMuted}/> {s.editedLabel}</span>}
+                              </div>
                               <ActionMenuButton menuKey={`comment-${c.id}`} text={c.text}
                                 isOwner={!!ownedComments[c.id]}
                                 onEdit={()=>{setEditingCommentId(c.id);setEditCommentText(c.text);}}
                                 onDelete={()=>deleteComment(activePost.id,c.id)}/>
                             </div>
-                          </div>
 
-                          {editingCommentId===c.id?(
-                            <div style={{marginBottom:8}}>
-                              <textarea value={editCommentText} onChange={e=>setEditCommentText(e.target.value)}
-                                maxLength={300} autoFocus rows={2}
-                                style={{...inputBase,width:"100%",border:BORDERS.edit,
-                                  minHeight:isMobile?60:50,resize:"vertical",fontFamily:s.font,lineHeight:1.4}}/>
-                              {err&&<div style={{color:"#D07070",fontSize:FONT.caption,marginTop:4}}>{err}</div>}
-                              <div style={{display:"flex",gap:6,marginTop:6,flexWrap:"wrap"}}>
-                                <button onClick={()=>saveEditComment(activePost.id,c.id)} style={btnPrimary}>{s.editSave}</button>
-                                <button onClick={cancelEdit} style={btnSecondary}>{s.editCancel}</button>
+                            {editingCommentId===c.id?(
+                              <div style={{marginBottom:8}}>
+                                <textarea value={editCommentText} onChange={e=>setEditCommentText(e.target.value)}
+                                  maxLength={300} autoFocus rows={2}
+                                  style={{...inputBase,width:"100%",border:BORDERS.edit,
+                                    minHeight:isMobile?60:50,resize:"vertical",fontFamily:s.font,lineHeight:1.4}}/>
+                                {err&&<div style={{color:"#D07070",fontSize:FONT.caption,marginTop:4}}>{err}</div>}
+                                <div style={{display:"flex",gap:6,marginTop:6,flexWrap:"wrap"}}>
+                                  <button onClick={()=>saveEditComment(activePost.id,c.id)} style={btnPrimary}>{s.editSave}</button>
+                                  <button onClick={cancelEdit} style={btnSecondary}>{s.editCancel}</button>
+                                </div>
                               </div>
-                            </div>
-                          ):(
-                            <>
-                              <p style={{margin:"0 0 9px",fontSize:R.commentText,lineHeight:1.7,
-                                color:CL.text,wordBreak:"break-word"}}>{c.text}</p>
-                              {c.mdFile&&mdBadge(c.mdFile,`comment-${c.id}`)}
-                            </>
-                          )}
+                            ):(
+                              <>
+                                <p style={{margin:"0 0 8px",fontSize:R.commentText,lineHeight:1.7,
+                                  color:CL.text,wordBreak:"break-word"}}>{c.text}</p>
+                                {c.mdFile&&mdBadge(c.mdFile,`comment-${c.id}`)}
+                              </>
+                            )}
 
-                          {/* Reactions + Reply row */}
-                          <div style={{display:"flex",justifyContent:"space-between",
-                            alignItems:"center",flexWrap:"wrap",gap:8,marginTop:6}}>
-                            {reactionRow(activePost.id,c.id,c.votes)}
-                            <div style={{display:"flex",gap:6,alignItems:"center",flexWrap:"wrap"}}>
+                            {/* Reactions + Reply row */}
+                            <div style={{display:"flex",alignItems:"center",flexWrap:"wrap",gap:10}}>
+                              {reactionRow(activePost.id,c.id,c.votes)}
                               {replies.length>0&&(
                                 <button onClick={()=>toggleReplies(c.id)}
-                                  style={{...btn0,
-                                    background:isExpanded?CL.replyDim:CL.borderFaint,
-                                    border:isExpanded?BORDERS.reply:BORDERS.default,
-                                    borderRadius:RADIUS.pill,padding:isMobile?"7px 10px":"4px 10px",
+                                  style={{...btn0,display:"inline-flex",alignItems:"center",gap:5,
+                                    background:"transparent",border:"none",padding:"4px 2px",
                                     color:isExpanded?CL.reply:CL.textMuted,
                                     fontSize:isMobile?12:11,fontWeight:700,
-                                    minHeight:isMobile?36:"auto",transition:TRANSITIONS.colorChange}}>
-                                  💬 {s.showReplies(replies.length)}
+                                    minHeight:isMobile?32:"auto",transition:TRANSITIONS.colorChange}}>
+                                  <IconMessageCircle size={12} color={isExpanded?CL.reply:CL.textMuted}/>
+                                  {s.showReplies(replies.length)}
                                 </button>
                               )}
                               {!isBanned&&(
                                 <button onClick={()=>startReply(c.id)}
-                                  style={{...btn0,
-                                    background:isReplying?CL.replyDim:CL.borderFaint,
-                                    border:isReplying?BORDERS.reply:BORDERS.default,
-                                    borderRadius:RADIUS.pill,padding:isMobile?"7px 10px":"4px 10px",
+                                  style={{...btn0,display:"inline-flex",alignItems:"center",gap:5,
+                                    background:"transparent",border:"none",padding:"4px 2px",
                                     color:isReplying?CL.reply:CL.textMuted,
                                     fontSize:isMobile?12:11,fontWeight:700,
-                                    minHeight:isMobile?36:"auto",transition:TRANSITIONS.colorChange}}>
-                                  ↩ {s.replyBtn}
+                                    minHeight:isMobile?32:"auto",transition:TRANSITIONS.colorChange}}>
+                                  <IconReply size={12} color={isReplying?CL.reply:CL.textMuted}/>
+                                  {s.replyBtn}
                                 </button>
                               )}
                             </div>
                           </div>
                         </div>
 
-                        {/* ── Replies (Twitter-style) */}
-                        {(isExpanded||isReplying)&&(
+                        {/* ── Replies (نفس عرض التعليق الرئيسي، مُزاحة لتحاذي
+                            بداية النص فوقها تماماً تحت خط "الخيط" العمودي) */}
+                        {showThread&&(
                           <div style={{
-                            marginTop:4,
-                            marginInlineStart:R.replyIndent,
-                            borderInlineStart:`2px solid ${CL.replyBorder}`,
-                            paddingInlineStart:R.replyPadStart,
-                            display:"flex",flexDirection:"column",gap:8,
+                            marginTop:8,
+                            marginInlineStart:35, /* 26px عرض الأفاتار + 9px الفجوة، لمحاذاة دقيقة تحت الخط العمودي */
+                            display:"flex",flexDirection:"column",gap:10,
                           }}>
-                            {/* Existing replies */}
+                            {/* Existing replies — نفس نمط أفاتار+نص التعليقات
+                                لكن بحجم أصغر، بدون بطاقة/حدود منفصلة */}
                             {isExpanded&&replies.map(r=>(
-                              <div key={r.id} style={{background:"rgba(167,139,204,0.05)",
-                                border:BORDERS.reply,borderRadius:RADIUS.md,
+                              <div key={r.id} style={{display:"flex",gap:8,
                                 position:"relative",
-                                zIndex:openMenuFor===`reply-${r.id}`?60:"auto",
-                                padding:isMobile?"8px 10px":"8px 10px"}}>
-                                <div style={{display:"flex",justifyContent:"space-between",
-                                  alignItems:"flex-start",marginBottom:5,gap:6}}>
-                                  <span style={{fontSize:FONT.badge,color:CL.reply,fontWeight:700}}>↩ 🔒</span>
-                                  <div style={{display:"flex",alignItems:"center",gap:R.gap,flexWrap:"wrap"}}>
-                                    {r.edited&&<span style={{fontSize:FONT.micro,color:CL.textMuted,fontStyle:"italic"}}>✏️ {s.editedLabel}</span>}
-                                    <span style={{fontSize:R.metaFont,color:CL.textMuted}}>{timeAgo(r.timestamp,s)}</span>
-                                    <ActionMenuButton menuKey={`reply-${r.id}`} text={r.text}
-                                      isOwner={!!ownedReplies[r.id]}
-                                      onEdit={()=>{setEditingReplyInfo({commentId:c.id,replyId:r.id});setEditReplyText(r.text);}}
-                                      onDelete={()=>deleteReply(activePost.id,c.id,r.id)}/>
-                                  </div>
+                                zIndex:openMenuFor===`reply-${r.id}`?60:"auto"}}>
+                                <div style={{flexShrink:0,width:20,height:20,borderRadius:RADIUS.circle,
+                                  background:CL.replyDim,display:"flex",alignItems:"center",
+                                  justifyContent:"center"}}>
+                                  <IconReply size={10} color={CL.reply}/>
                                 </div>
-                                {editingReplyInfo?.replyId===r.id?(
-                                  <div>
-                                    <textarea value={editReplyText} onChange={e=>setEditReplyText(e.target.value)}
-                                      maxLength={300} autoFocus rows={2}
-                                      style={{...inputBase,width:"100%",border:BORDERS.reply,
-                                        fontSize:isMobile?16:12,minHeight:isMobile?56:46,
-                                        resize:"vertical",fontFamily:s.font,lineHeight:1.4}}/>
-                                    {err&&<div style={{color:"#D07070",fontSize:FONT.caption,marginTop:4}}>{err}</div>}
-                                    <div style={{display:"flex",gap:6,marginTop:6,flexWrap:"wrap"}}>
-                                      <button onClick={()=>saveEditReply(activePost.id,c.id,r.id)}
-                                        style={{...btnPrimary,padding:isMobile?"8px 12px":"6px 10px",fontSize:FONT.caption}}>
-                                        {s.editSave}
-                                      </button>
-                                      <button onClick={cancelEdit}
-                                        style={{...btnSecondary,padding:isMobile?"8px 12px":"6px 10px",fontSize:FONT.caption}}>
-                                        {s.editCancel}
-                                      </button>
+                                <div style={{flex:1,minWidth:0}}>
+                                  <div style={{display:"flex",justifyContent:"space-between",
+                                    alignItems:"flex-start",marginBottom:4,gap:6}}>
+                                    <span style={{fontSize:R.metaFont,color:CL.textMuted}}>{timeAgo(r.timestamp,s)}</span>
+                                    <div style={{display:"flex",alignItems:"center",gap:R.gap,flexWrap:"wrap"}}>
+                                      {r.edited&&<span style={{fontSize:FONT.micro,color:CL.textMuted,fontStyle:"italic",display:"inline-flex",alignItems:"center",gap:3}}><IconPencil size={9} color={CL.textMuted}/> {s.editedLabel}</span>}
+                                      <ActionMenuButton menuKey={`reply-${r.id}`} text={r.text}
+                                        isOwner={!!ownedReplies[r.id]}
+                                        onEdit={()=>{setEditingReplyInfo({commentId:c.id,replyId:r.id});setEditReplyText(r.text);}}
+                                        onDelete={()=>deleteReply(activePost.id,c.id,r.id)}/>
                                     </div>
                                   </div>
-                                ):(
-                                  <>
-                                    <p style={{margin:"0 0 6px",fontSize:R.replyText,lineHeight:1.65,
-                                      color:CL.text,wordBreak:"break-word"}}>{r.text}</p>
-                                    {r.mdFile&&mdBadge(r.mdFile,`reply-${r.id}`)}
-                                  </>
-                                )}
+                                  {editingReplyInfo?.replyId===r.id?(
+                                    <div>
+                                      <textarea value={editReplyText} onChange={e=>setEditReplyText(e.target.value)}
+                                        maxLength={300} autoFocus rows={2}
+                                        style={{...inputBase,width:"100%",border:BORDERS.reply,
+                                          fontSize:isMobile?16:12,minHeight:isMobile?56:46,
+                                          resize:"vertical",fontFamily:s.font,lineHeight:1.4}}/>
+                                      {err&&<div style={{color:"#D07070",fontSize:FONT.caption,marginTop:4}}>{err}</div>}
+                                      <div style={{display:"flex",gap:6,marginTop:6,flexWrap:"wrap"}}>
+                                        <button onClick={()=>saveEditReply(activePost.id,c.id,r.id)}
+                                          style={{...btnPrimary,padding:isMobile?"8px 12px":"6px 10px",fontSize:FONT.caption}}>
+                                          {s.editSave}
+                                        </button>
+                                        <button onClick={cancelEdit}
+                                          style={{...btnSecondary,padding:isMobile?"8px 12px":"6px 10px",fontSize:FONT.caption}}>
+                                          {s.editCancel}
+                                        </button>
+                                      </div>
+                                    </div>
+                                  ):(
+                                    <>
+                                      <p style={{margin:"0 0 4px",fontSize:R.replyText,lineHeight:1.65,
+                                        color:CL.text,wordBreak:"break-word"}}>{r.text}</p>
+                                      {r.mdFile&&mdBadge(r.mdFile,`reply-${r.id}`)}
+                                    </>
+                                  )}
+                                </div>
                               </div>
                             ))}
 
@@ -2495,7 +2624,7 @@ export default function Inkore() {
                                       <span style={{display:"inline-block",width:11,height:11,
                                         border:`2px solid ${CL.replyBorder}`,borderTopColor:CL.reply,
                                         borderRadius:RADIUS.circle,animation:"inkoreSpin 0.6s linear infinite"}}/>
-                                    ):"↩"} {isReplying2?s.replyBtnPosting:s.replyBtn}
+                                    ):(<span style={{display:"flex"}}><IconReply size={13} color={CL.reply}/></span>)} {isReplying2?s.replyBtnPosting:s.replyBtn}
                                   </button>
                                 </div>
                                 <MdAttachRow target="reply" file={replyMdFile}
@@ -2651,28 +2780,39 @@ export default function Inkore() {
                   const replyCount=(p.comments||[]).reduce((a,c)=>a+(c.replies||[]).length,0);
                   const flagCount=(p.votes?.flaggedBy||[]).length;
                   const isLast=idx===displayed.length-1;
+                  const isHovered=hoveredPostId===p.id;
                   return(
                     <div key={p.id} data-pressable="card" onClick={()=>openThread(p.id)}
+                      onMouseEnter={()=>setHoveredPostId(p.id)}
+                      onMouseLeave={()=>setHoveredPostId(prev=>prev===p.id?null:prev)}
                       style={{cursor:"pointer",opacity:flagCount>1?0.6:1,
                         WebkitTapHighlightColor:"transparent",
-                        display:"flex",gap:11,
-                        padding:isMobile?"14px 2px":"15px 4px",
-                        borderBottom:isLast?"none":BORDERS.default,
+                        display:"flex",gap:10,
+                        // خلفية hover خفيفة جداً بامتداد كامل الصف (بدون حدود
+                        // بطاقة) — نفس إحساس Threads عند تمرير الفأرة، غير
+                        // مزعجة على اللمس لأنها تُفعّل فقط بـ mouse events
+                        background:isHovered?CL.borderFaint:"transparent",
+                        margin:"0 -8px",padding:isMobile?"12px 8px":"12px 8px",
+                        borderBottom:isLast?"none":`1px solid ${CL.borderFaint}`,
                         position:"relative",
                         zIndex:openMenuFor===`post-${p.id}`?60:"auto",
                         transform:threadPending===p.id?"scale(0.988)":"scale(1)",
-                        transition:threadPending===p.id ? TRANSITIONS.press : TRANSITIONS.colorChange,
+                        transition:threadPending===p.id ? TRANSITIONS.press : `${TRANSITIONS.colorChange}, background-color 0.15s ease`,
                         willChange:"transform"}}>
 
-                      {/* أفاتار دائري بنمط Threads — حرف التصنيف الأول داخل
-                          دائرة ملونة حسب لون التصنيف، بدل صورة بروفايل حقيقية
-                          (المنشورات مجهولة الهوية) */}
-                      <div style={{flexShrink:0,width:isMobile?36:38,height:isMobile?36:38,
-                        borderRadius:RADIUS.circle,background:ci.bg,
-                        display:"flex",alignItems:"center",justifyContent:"center",
-                        fontSize:FONT.heading,fontWeight:800,color:ci.color}}>
+                      {/* أفاتار دائري بنمط Threads — قابل للنقر بشكل مستقل عن
+                          باقي البطاقة (stopPropagation) رغم أنه لا يقود لصفحة
+                          بروفايل فعلية هنا (منشورات مجهولة الهوية)؛ يفتح نفس
+                          الثريد حالياً، تماماً كما يفعل النقر على الاسم بـ Threads */}
+                      <button onClick={e=>{e.stopPropagation();openThread(p.id);}}
+                        aria-label={s.cat(p.category)}
+                        style={{...btn0,flexShrink:0,width:isMobile?36:38,height:isMobile?36:38,
+                          borderRadius:RADIUS.circle,background:ci.bg,
+                          display:"flex",alignItems:"center",justifyContent:"center",
+                          fontSize:FONT.heading,fontWeight:800,color:ci.color,
+                          transition:TRANSITIONS.colorChange}}>
                         {s.cat(p.category)?.trim()?.charAt(0)||"•"}
-                      </div>
+                      </button>
 
                       <div style={{flex:1,minWidth:0}}>
                         <div style={{display:"flex",justifyContent:"space-between",
@@ -2682,7 +2822,7 @@ export default function Inkore() {
                               {s.cat(p.category)}
                             </span>
                             <span style={{fontSize:R.metaFont,color:CL.textMuted}}>· {timeAgo(p.timestamp,s)}</span>
-                            {p.edited&&<span style={{fontSize:FONT.micro,color:CL.textMuted,fontStyle:"italic"}}>✏️ {s.editedLabel}</span>}
+                            {p.edited&&<span style={{fontSize:FONT.micro,color:CL.textMuted,fontStyle:"italic",display:"inline-flex",alignItems:"center",gap:3}}><IconPencil size={9} color={CL.textMuted}/> {s.editedLabel}</span>}
                             {flagCount>0&&<span style={{fontSize:FONT.micro,color:CL.flag}}>🚩 {flagCount}</span>}
                           </div>
                           <ActionMenuButton menuKey={`post-${p.id}`} text={p.text}
@@ -2719,16 +2859,20 @@ export default function Inkore() {
                           </div>
                         )}
 
-                        <div style={{display:"flex",alignItems:"center",gap:14,marginTop:4}}>
+                        <div style={{display:"flex",alignItems:"center",gap:14,marginTop:2}}>
                           {reactionRow(p.id,null,p.votes)}
                           <button onClick={e=>{e.stopPropagation();openThread(p.id);}}
                             style={{...btn0,display:"flex",alignItems:"center",gap:5,
                               background:"transparent",border:"none",padding:isMobile?"7px 4px":"5px 2px",
                               color:CL.textMuted,fontSize:FONT.caption,fontWeight:700,
                               minHeight:isMobile?36:"auto"}}>
-                            <span>💬</span>
+                            <span style={{display:"flex"}}><IconMessageCircle size={15} color={CL.textMuted}/></span>
                             {commentCount>0&&<span>{commentCount}</span>}
-                            {replyCount>0&&<span style={{color:CL.reply}}>↩{replyCount}</span>}
+                            {replyCount>0&&(
+                              <span style={{color:CL.reply,display:"inline-flex",alignItems:"center",gap:2}}>
+                                <IconReply size={12} color={CL.reply}/>{replyCount}
+                              </span>
+                            )}
                           </button>
                         </div>
                       </div>
