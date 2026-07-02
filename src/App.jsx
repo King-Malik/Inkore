@@ -103,6 +103,96 @@ const IconUnlock = ({ size = 14, color = "currentColor", strokeWidth = 2 }) => (
     <rect x="3" y="11" width="18" height="11" rx="2" ry="2" /><path d="M7 11V7a5 5 0 0 1 9.9-1" />
   </svg>
 );
+const IconUser = ({ size = 16, color = "currentColor", strokeWidth = 2 }) => (
+  <svg {...svgBase(size, color, strokeWidth)}>
+    <path d="M19 21v-2a4 4 0 0 0-4-4H9a4 4 0 0 0-4 4v2" /><circle cx="12" cy="7" r="4" />
+  </svg>
+);
+const IconSettings = ({ size = 16, color = "currentColor", strokeWidth = 2 }) => (
+  <svg {...svgBase(size, color, strokeWidth)}>
+    <path d="M12.22 2h-.44a2 2 0 0 0-2 2v.18a2 2 0 0 1-1 1.73l-.43.25a2 2 0 0 1-2 0l-.15-.08a2 2 0 0 0-2.73.73l-.22.38a2 2 0 0 0 .73 2.73l.15.1a2 2 0 0 1 1 1.72v.51a2 2 0 0 1-1 1.74l-.15.09a2 2 0 0 0-.73 2.73l.22.38a2 2 0 0 0 2.73.73l.15-.08a2 2 0 0 1 2 0l.43.25a2 2 0 0 1 1 1.73V20a2 2 0 0 0 2 2h.44a2 2 0 0 0 2-2v-.18a2 2 0 0 1 1-1.73l.43-.25a2 2 0 0 1 2 0l.15.08a2 2 0 0 0 2.73-.73l.22-.39a2 2 0 0 0-.73-2.73l-.15-.08a2 2 0 0 1-1-1.74v-.5a2 2 0 0 1 1-1.74l.15-.09a2 2 0 0 0 .73-2.73l-.22-.38a2 2 0 0 0-2.73-.73l-.15.08a2 2 0 0 1-2 0l-.43-.25a2 2 0 0 1-1-1.73V4a2 2 0 0 0-2-2z" />
+    <circle cx="12" cy="12" r="3" />
+  </svg>
+);
+const IconPaperclip = ({ size = 14, color = "currentColor", strokeWidth = 2 }) => (
+  <svg {...svgBase(size, color, strokeWidth)}>
+    <path d="m21.44 11.05-9.19 9.19a6 6 0 0 1-8.49-8.49l8.57-8.57A4 4 0 1 1 18 8.84l-8.59 8.57a2 2 0 0 1-2.83-2.83l8.49-8.48" />
+  </svg>
+);
+const IconUpload = ({ size = 14, color = "currentColor", strokeWidth = 2 }) => (
+  <svg {...svgBase(size, color, strokeWidth)}>
+    <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4" /><polyline points="17 8 12 3 7 8" /><line x1="12" x2="12" y1="3" y2="15" />
+  </svg>
+);
+const IconQuote = ({ size = 14, color = "currentColor", strokeWidth = 2 }) => (
+  <svg {...svgBase(size, color, strokeWidth)}>
+    <path d="M16 3a2 2 0 0 0-2 2v6a2 2 0 0 0 2 2 1 1 0 0 1 1 1v1a2 2 0 0 1-2 2 1 1 0 0 0-1 1v2a1 1 0 0 0 1 1 6 6 0 0 0 6-6V5a2 2 0 0 0-2-2z" />
+    <path d="M5 3a2 2 0 0 0-2 2v6a2 2 0 0 0 2 2 1 1 0 0 1 1 1v1a2 2 0 0 1-2 2 1 1 0 0 0-1 1v2a1 1 0 0 0 1 1 6 6 0 0 0 6-6V5a2 2 0 0 0-2-2z" />
+  </svg>
+);
+const IconLink = ({ size = 14, color = "currentColor", strokeWidth = 2 }) => (
+  <svg {...svgBase(size, color, strokeWidth)}>
+    <path d="M9 17H7A5 5 0 0 1 7 7h2" /><path d="M15 7h2a5 5 0 1 1 0 10h-2" /><line x1="8" x2="16" y1="12" y2="12" />
+  </svg>
+);
+const IconImage = ({ size = 14, color = "currentColor", strokeWidth = 2 }) => (
+  <svg {...svgBase(size, color, strokeWidth)}>
+    <rect width="18" height="18" x="3" y="3" rx="2" ry="2" /><circle cx="9" cy="9" r="2" /><path d="m21 15-3.1-3.1a2 2 0 0 0-2.83 0L6 21" />
+  </svg>
+);
+const IconPause = ({ size = 14, color = "currentColor", strokeWidth = 2 }) => (
+  <svg {...svgBase(size, color, strokeWidth)}>
+    <rect x="14" y="4" width="4" height="16" rx="1" /><rect x="6" y="4" width="4" height="16" rx="1" />
+  </svg>
+);
+const IconAlertTriangle = ({ size = 14, color = "currentColor", strokeWidth = 2 }) => (
+  <svg {...svgBase(size, color, strokeWidth)}>
+    <path d="m21.73 18-8-14a2 2 0 0 0-3.48 0l-8 14A2 2 0 0 0 4 21h16a2 2 0 0 0 1.73-3Z" /><line x1="12" x2="12" y1="9" y2="13" /><line x1="12" x2="12.01" y1="17" y2="17" />
+  </svg>
+);
+const IconSprout = ({ size = 32, color = "currentColor", strokeWidth = 2 }) => (
+  <svg {...svgBase(size, color, strokeWidth)}>
+    <path d="M7 20h10" /><path d="M10 20c0-4.4-3-4.9-3-9a5 5 0 0 1 10 0c0 4.1-3 4.6-3 9" />
+    <path d="M12 20v-9" /><path d="M9 5a3 3 0 1 0 6 0" />
+  </svg>
+);
+const IconClock = ({ size = 14, color = "currentColor", strokeWidth = 2 }) => (
+  <svg {...svgBase(size, color, strokeWidth)}>
+    <circle cx="12" cy="12" r="10" /><polyline points="12 6 12 12 16 14" />
+  </svg>
+);
+const IconStar = ({ size = 14, color = "currentColor", strokeWidth = 2 }) => (
+  <svg {...svgBase(size, color, strokeWidth)}>
+    <path d="M11.53 2.22a.5.5 0 0 1 .94 0l2.31 5.06a.5.5 0 0 0 .4.29l5.5.5a.5.5 0 0 1 .29.88l-4.15 3.73a.5.5 0 0 0-.16.49l1.27 5.4a.5.5 0 0 1-.75.55l-4.74-2.9a.5.5 0 0 0-.52 0l-4.74 2.9a.5.5 0 0 1-.75-.55l1.27-5.4a.5.5 0 0 0-.16-.49L2.29 8.95a.5.5 0 0 1 .29-.88l5.5-.5a.5.5 0 0 0 .4-.29z" />
+  </svg>
+);
+const IconMail = ({ size = 14, color = "currentColor", strokeWidth = 2 }) => (
+  <svg {...svgBase(size, color, strokeWidth)}>
+    <rect width="20" height="16" x="2" y="4" rx="2" /><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7" />
+  </svg>
+);
+const IconFileText = ({ size = 14, color = "currentColor", strokeWidth = 2 }) => (
+  <svg {...svgBase(size, color, strokeWidth)}>
+    <path d="M15 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7Z" /><path d="M14 2v4a2 2 0 0 0 2 2h4" />
+    <path d="M10 9H8" /><path d="M16 13H8" /><path d="M16 17H8" />
+  </svg>
+);
+const IconSun = ({ size = 14, color = "currentColor", strokeWidth = 2 }) => (
+  <svg {...svgBase(size, color, strokeWidth)}>
+    <circle cx="12" cy="12" r="4" /><path d="M12 2v2" /><path d="M12 20v2" /><path d="m4.93 4.93 1.41 1.41" />
+    <path d="m17.66 17.66 1.41 1.41" /><path d="M2 12h2" /><path d="M20 12h2" /><path d="m6.34 17.66-1.41 1.41" /><path d="m19.07 4.93-1.41 1.41" />
+  </svg>
+);
+const IconMoon = ({ size = 14, color = "currentColor", strokeWidth = 2 }) => (
+  <svg {...svgBase(size, color, strokeWidth)}>
+    <path d="M12 3a6 6 0 0 0 9 9 9 9 0 1 1-9-9Z" />
+  </svg>
+);
+const IconCopy = ({ size = 14, color = "currentColor", strokeWidth = 2 }) => (
+  <svg {...svgBase(size, color, strokeWidth)}>
+    <rect width="14" height="14" x="8" y="8" rx="2" ry="2" /><path d="M4 16c-1.1 0-2-.9-2-2V4c0-1.1.9-2 2-2h10c1.1 0 2 .9 2 2" />
+  </svg>
+);
 const REACTION_ICONS = {
   helpful: IconThumbsUp, agree: IconHandshake, relatable: IconHeart,
   inspiring: IconSparkles, flag: IconFlag,
@@ -346,11 +436,11 @@ const CATS = {
 };
 
 const REACTIONS = [
-  { key:"helpful",   emoji:"👍", labelKey:"rHelpful"   },
-  { key:"agree",     emoji:"🤝", labelKey:"rAgree"     },
-  { key:"relatable", emoji:"❤️", labelKey:"rRelatable" },
-  { key:"inspiring", emoji:"✨", labelKey:"rInspiring" },
-  { key:"flag",      emoji:"🚩", labelKey:"rFlag",     isModeration:true },
+  { key:"helpful",   labelKey:"rHelpful"   },
+  { key:"agree",     labelKey:"rAgree"     },
+  { key:"relatable", labelKey:"rRelatable" },
+  { key:"inspiring", labelKey:"rInspiring" },
+  { key:"flag",      labelKey:"rFlag",     isModeration:true },
 ];
 
 const PLACEHOLDERS = {
@@ -641,7 +731,7 @@ const S = {
     toastPurged:"تم حذف بياناتك نهائياً.",
     toastOwnershipCleared:"تم إلغاء ملكيتك المحلية.",
     editSave:"حفظ",editCancel:"إلغاء",editedLabel:"معدَّل",
-    attachMd:"إرفاق .md",attachedFile:n=>`📎 ${n}`,
+    attachMd:"إرفاق .md",attachedFile:n=>`${n}`,
     mdPreview:"معاينة",removeFile:"إزالة",
     mdEditorTitle:"محرر Markdown",
     mdEditorTabWrite:"كتابة",mdEditorTabPreview:"معاينة",
@@ -720,7 +810,7 @@ const S = {
     toastPurged:"Your data has been permanently deleted.",
     toastOwnershipCleared:"Your local ownership has been cleared.",
     editSave:"Save",editCancel:"Cancel",editedLabel:"edited",
-    attachMd:"Attach .md",attachedFile:n=>`📎 ${n}`,
+    attachMd:"Attach .md",attachedFile:n=>`${n}`,
     mdPreview:"Preview",removeFile:"Remove",
     mdEditorTitle:"Markdown Editor",
     mdEditorTabWrite:"Write",mdEditorTabPreview:"Preview",
@@ -1381,10 +1471,11 @@ export default function Inkore() {
     return (
       <div style={{marginBottom:8}}>
         <button onClick={e=>{e.stopPropagation();setExpandedIds(prev=>({...prev,[`md-${badgeKey}`]:!prev[`md-${badgeKey}`]}));}}
-          style={{...btn0,display:"inline-flex",alignItems:"center",gap:4,background:CL.editDim,
+          style={{...btn0,display:"inline-flex",alignItems:"center",gap:5,background:CL.editDim,
             border:BORDERS.edit,borderRadius:RADIUS.sm,padding:"4px 10px",
             fontSize:FONT.caption,color:CL.edit,maxWidth:"100%",overflow:"hidden",
             textOverflow:"ellipsis",whiteSpace:"nowrap",minHeight:isMobile?32:"auto"}}>
+          <IconFileText size={12} color={CL.edit}/>
           {s.attachedFile(file.name)} {open?"▲":"▼"}
         </button>
         {open&&(
@@ -1405,16 +1496,19 @@ export default function Inkore() {
     <div style={{marginTop:6}}>
       <div style={{display:"flex",alignItems:"center",gap:6,flexWrap:"wrap"}}>
         <button onClick={()=>openMdEditor(target,file)}
-          style={{...btn0,display:"inline-flex",alignItems:"center",gap:4,background:CL.editDim,
+          style={{...btn0,display:"inline-flex",alignItems:"center",gap:5,background:CL.editDim,
             border:BORDERS.edit,borderRadius:RADIUS.pill,padding:"6px 10px",
             color:CL.edit,fontSize:FONT.caption,fontWeight:700,minHeight:isMobile?36:"auto"}}>
-          📎 {file ? s.mdEditorEditing(file.name||"") : s.attachMd}
+          <IconPaperclip size={12} color={CL.edit}/>
+          {file ? s.mdEditorEditing(file.name||"") : s.attachMd}
         </button>
         {file&&(
           <>
             <span style={{background:CL.editDim,border:BORDERS.edit,
               borderRadius:RADIUS.sm,padding:"4px 8px",fontSize:FONT.caption,color:CL.edit,
-              maxWidth:isMobile?100:160,overflow:"hidden",textOverflow:"ellipsis",whiteSpace:"nowrap"}}>
+              maxWidth:isMobile?100:160,overflow:"hidden",textOverflow:"ellipsis",whiteSpace:"nowrap",
+              display:"inline-flex",alignItems:"center",gap:4}}>
+              <IconFileText size={11} color={CL.edit}/>
               {s.attachedFile(file.name)}
             </span>
             <button onClick={onRemove}
@@ -1475,13 +1569,13 @@ export default function Inkore() {
       {icon:"S̶",label:s.mdToolStrike,action:()=>wrapSelection("~~","~~","نص")},
       {icon:"H1",label:s.mdToolH1,action:()=>prefixLines("# ")},
       {icon:"H2",label:s.mdToolH2,action:()=>prefixLines("## ")},
-      {icon:"❝",label:s.mdToolQuote,action:()=>prefixLines("> ")},
+      {icon:<IconQuote size={13} color={CL.text}/>,label:s.mdToolQuote,action:()=>prefixLines("> ")},
       {icon:"•",label:s.mdToolUl,action:()=>prefixLines("- ")},
       {icon:"1.",label:s.mdToolOl,action:()=>prefixLines("1. ")},
       {icon:"</>",label:s.mdToolCode,action:()=>wrapSelection("`","`","code")},
       {icon:"{ }",label:s.mdToolCodeBlock,action:()=>wrapSelection("```\n","\n```","")},
-      {icon:"🔗",label:s.mdToolLink,action:()=>wrapSelection("[","](https://)","نص الرابط")},
-      {icon:"🖼",label:s.mdToolImage,action:()=>wrapSelection("![","](https://)","وصف الصورة")},
+      {icon:<IconLink size={13} color={CL.text}/>,label:s.mdToolLink,action:()=>wrapSelection("[","](https://)","نص الرابط")},
+      {icon:<IconImage size={13} color={CL.text}/>,label:s.mdToolImage,action:()=>wrapSelection("![","](https://)","وصف الصورة")},
       {icon:"—",label:s.mdToolHr,action:()=>setContent(c=>c+(c.endsWith("\n")||!c?"":"\n")+"\n---\n")},
     ];
 
@@ -1539,9 +1633,11 @@ export default function Inkore() {
           padding:isMobile?"12px 14px":"14px 20px",borderBottom:BORDERS.default,
           background:CL.surface}}>
           <button onClick={closeMdEditor}
-            style={{...btn0,color:CL.textSub,fontSize:FONT.heading,padding:"4px 8px",
-              minHeight:isMobile?40:"auto"}}>
-            {s.d==="rtl"?"→":"←"}
+            style={{...btn0,color:CL.textSub,padding:"4px 8px",
+              minHeight:isMobile?40:"auto",display:"flex",alignItems:"center"}}>
+            <span style={{display:"flex",transform:s.d==="rtl"?"none":"scaleX(-1)"}}>
+              <IconArrowRight size={17} color={CL.textSub}/>
+            </span>
           </button>
           <div style={{flex:1,minWidth:0}}>
             <div style={{fontSize:FONT.body,fontWeight:700,color:CL.text}}>{s.mdEditorTitle}</div>
@@ -1560,7 +1656,7 @@ export default function Inkore() {
               background:CL.borderFaint,border:BORDERS.default,borderRadius:RADIUS.pill,
               padding:"6px 12px",color:CL.textSub,fontSize:FONT.caption,fontWeight:700,
               minHeight:isMobile?36:"auto"}}>
-            📥 {s.mdEditorUpload}
+            <IconUpload size={13} color={CL.textSub}/> {s.mdEditorUpload}
           </button>
           <input ref={uploadRef} type="file" accept=".md" style={{display:"none"}}
             onChange={e=>{if(e.target.files[0])handleUploadFile(e.target.files[0]);e.target.value="";}}/>
@@ -1647,13 +1743,13 @@ export default function Inkore() {
               style={{...btn0,display:"flex",alignItems:"center",gap:8,width:"100%",
                 textAlign:s.d==="rtl"?"right":"left",background:"none",border:"none",
                 padding:"10px 14px",color:CL.text,fontSize:FONT.body,fontWeight:600}}>
-              📋 {s.actionCopy}
+              <IconCopy size={14} color={CL.text}/> {s.actionCopy}
             </button>
             <button onClick={()=>{shareItemText(text);setOpenMenuFor(null);}}
               style={{...btn0,display:"flex",alignItems:"center",gap:8,width:"100%",
                 textAlign:s.d==="rtl"?"right":"left",background:"none",border:"none",
                 padding:"10px 14px",color:CL.text,fontSize:FONT.body,fontWeight:600}}>
-              🔗 {s.actionShare}
+              <IconLink size={14} color={CL.text}/> {s.actionShare}
             </button>
             {isOwner&&(
               <>
@@ -1886,7 +1982,7 @@ export default function Inkore() {
             border:BORDERS.danger,
             boxShadow:SHADOWS.danger,
             animation:`popInCard ${ANIM.sheet}`}}>
-            <div style={{fontSize:FONT.display,textAlign:"center",marginBottom:10}}>⚠️</div>
+            <div style={{display:"flex",justifyContent:"center",marginBottom:10}}><IconAlertTriangle size={26} color={CL.danger}/></div>
             <div style={{fontSize:FONT.subhead,color:CL.text,lineHeight:1.7,marginBottom:20,
               wordBreak:"break-word",textAlign:"center"}}>
               {dangerState.message}
@@ -1942,7 +2038,7 @@ export default function Inkore() {
                 borderRadius:RADIUS.lg,padding:isMobile?"14px 16px":"12px 16px",
                 color:CL.text,minHeight:isMobile?48:"auto"}}>
               <span style={{fontSize:FONT.subhead,fontWeight:800}}>{s.settings}</span>
-              <span style={{fontSize:FONT.title,color:CL.textSub}}>⚙️</span>
+              <span style={{display:"flex",color:CL.textSub}}><IconSettings size={18} color={CL.textSub}/></span>
             </button>
           </div>
         </div>
@@ -2011,7 +2107,7 @@ export default function Inkore() {
                   fontSize:FONT.bodyLg,fontWeight:700,
                   minHeight:isMobile?44:"auto",transition:TRANSITIONS.colorChange,
                   display:"flex",alignItems:"center",justifyContent:"center",gap:6}}>
-                🌙 {s.themeDark}
+                <IconMoon size={15} color={themePref==="dark"?CL.accent:CL.textMuted}/> {s.themeDark}
               </button>
               <button onClick={()=>{setThemePref("light");db.saveThemePref("light");}}
                 style={{...btn0,flex:1,padding:isMobile?"11px 8px":"9px 12px",borderRadius:RADIUS.md,
@@ -2021,7 +2117,7 @@ export default function Inkore() {
                   fontSize:FONT.bodyLg,fontWeight:700,
                   minHeight:isMobile?44:"auto",transition:TRANSITIONS.colorChange,
                   display:"flex",alignItems:"center",justifyContent:"center",gap:6}}>
-                ☀️ {s.themeLight}
+                <IconSun size={15} color={themePref==="light"?CL.accent:CL.textMuted}/> {s.themeLight}
               </button>
             </div>
 
@@ -2031,9 +2127,9 @@ export default function Inkore() {
             </div>
             <div style={{display:"flex",flexDirection:"column",gap:8,marginBottom:22}}>
               {[
-                {label:s.privacyPolicy,icon:"🔒"},
-                {label:s.termsConditions,icon:"📄"},
-                {label:s.contactUs,icon:"✉️"},
+                {label:s.privacyPolicy,IconEl:IconLock},
+                {label:s.termsConditions,IconEl:IconFileText},
+                {label:s.contactUs,IconEl:IconMail},
               ].map(item=>(
                 <button key={item.label}
                   style={{...btn0,textAlign:s.d==="rtl"?"right":"left",
@@ -2043,9 +2139,12 @@ export default function Inkore() {
                     color:CL.textSub,fontSize:FONT.body,fontWeight:700,
                     minHeight:isMobile?46:"auto"}}>
                   <span style={{display:"flex",alignItems:"center",gap:8}}>
-                    {item.icon} {item.label}
+                    <item.IconEl size={14} color={CL.textSub}/> {item.label}
                   </span>
-                  <span style={{color:CL.textMuted,fontSize:FONT.label}}>{s.d==="rtl"?"←":"→"}</span>
+                  <span style={{display:"flex",color:CL.textMuted,
+                    transform:s.d==="rtl"?"none":"scaleX(-1)"}}>
+                    <IconArrowRight size={13} color={CL.textMuted}/>
+                  </span>
                 </button>
               ))}
             </div>
@@ -2053,7 +2152,7 @@ export default function Inkore() {
             {/* منطقة خطرة: إدارة البيانات */}
             <div style={{fontSize:FONT.caption,color:CL.danger,fontWeight:700,marginBottom:8,
               display:"flex",alignItems:"center",gap:5}}>
-              ⚠️ {s.settingsDangerZone}
+              <IconAlertTriangle size={13} color={CL.danger}/> {s.settingsDangerZone}
             </div>
             <div style={{display:"flex",flexDirection:"column",gap:8}}>
               <button onClick={confirmPurgeContent}
@@ -2139,7 +2238,7 @@ export default function Inkore() {
             {profileTab==="posts"&&(
               myPosts.length===0?(
                 <div style={{textAlign:"center",padding:"48px 20px",color:CL.textMuted}}>
-                  <div style={{fontSize:FONT.displayXl,marginBottom:12}}>📝</div>
+                  <div style={{display:"flex",justifyContent:"center",marginBottom:12}}><IconFileText size={38} color={CL.textMuted}/></div>
                   <div style={{fontSize:FONT.heading,marginBottom:5}}>{s.profileEmptyPosts}</div>
                   <div style={{fontSize:FONT.body}}>{s.profileEmptyPostsSub}</div>
                 </div>
@@ -2180,7 +2279,7 @@ export default function Inkore() {
             {profileTab==="comments"&&(
               myComments.length===0?(
                 <div style={{textAlign:"center",padding:"48px 20px",color:CL.textMuted}}>
-                  <div style={{fontSize:FONT.displayXl,marginBottom:12}}>💬</div>
+                  <div style={{display:"flex",justifyContent:"center",marginBottom:12}}><IconMessageCircle size={38} color={CL.textMuted}/></div>
                   <div style={{fontSize:FONT.heading,marginBottom:5}}>{s.profileEmptyComments}</div>
                   <div style={{fontSize:FONT.body}}>{s.profileEmptyCommentsSub}</div>
                 </div>
@@ -2242,8 +2341,9 @@ export default function Inkore() {
                   </div>
                 ))}
               </div>
-              <div style={{textAlign:"center",fontSize:FONT.caption,color:CL.edit,fontWeight:700}}>
-                👤 {s.sidebarViewProfile}
+              <div style={{textAlign:"center",fontSize:FONT.caption,color:CL.edit,fontWeight:700,
+                display:"flex",alignItems:"center",justifyContent:"center",gap:5}}>
+                <IconUser size={13} color={CL.edit}/> {s.sidebarViewProfile}
               </div>
             </div>
 
@@ -2298,14 +2398,14 @@ export default function Inkore() {
             <button onClick={()=>setProfilePageOpen(true)} aria-label={s.profile}
               style={{...btn0,background:CL.surface,border:BORDERS.default,
                 borderRadius:RADIUS.lg,padding:isMobile?"10px 14px":"8px 12px",
-                color:CL.textSub,fontSize:FONT.heading,fontWeight:700,minHeight:isMobile?44:"auto"}}>
-              👤
+                color:CL.textSub,minHeight:isMobile?44:"auto",display:"flex",alignItems:"center"}}>
+              <IconUser size={18} color={CL.textSub}/>
             </button>
             <button onClick={()=>setSettingsOpen(true)} aria-label={s.settings}
               style={{...btn0,background:CL.surface,border:BORDERS.default,
                 borderRadius:RADIUS.lg,padding:isMobile?"10px 14px":"8px 12px",
-                color:CL.textSub,fontSize:FONT.heading,fontWeight:700,minHeight:isMobile?44:"auto"}}>
-              ⚙️
+                color:CL.textSub,minHeight:isMobile?44:"auto",display:"flex",alignItems:"center"}}>
+              <IconSettings size={18} color={CL.textSub}/>
             </button>
           </div>
         </div>
@@ -2314,8 +2414,8 @@ export default function Inkore() {
         {isBanned&&(
           <div style={{background:CL.dangerDim,border:BORDERS.danger,
             borderRadius:RADIUS.lg,padding:"12px 14px",marginBottom:14,color:CL.danger,
-            fontSize:FONT.body,wordBreak:"break-word"}}>
-            ⏸️ {s.banned} ({banTimeLeft}s)
+            fontSize:FONT.body,wordBreak:"break-word",display:"flex",alignItems:"center",gap:7}}>
+            <IconPause size={14} color={CL.danger}/> {s.banned} ({banTimeLeft}s)
           </div>
         )}
 
@@ -2397,8 +2497,10 @@ export default function Inkore() {
                   {activePost.note&&(
                     <div style={{borderInlineStart:`3px solid ${CATS[activePost.category]?.color}`,
                       paddingInlineStart:10,paddingTop:4,paddingBottom:4,marginBottom:12,
-                      fontSize:FONT.label,color:CL.textSub,fontStyle:"italic",wordBreak:"break-word"}}>
-                      📝 {activePost.note}
+                      fontSize:FONT.label,color:CL.textSub,fontStyle:"italic",wordBreak:"break-word",
+                      display:"flex",gap:6,alignItems:"flex-start"}}>
+                      <span style={{display:"flex",flexShrink:0,marginTop:2}}><IconFileText size={12} color={CL.textSub}/></span>
+                      <span>{activePost.note}</span>
                     </div>
                   )}
                   {reactionRow(activePost.id,null,activePost.votes)}
@@ -2735,7 +2837,7 @@ export default function Inkore() {
               <div style={{background:CL.okDim,border:BORDERS.ok,
                 borderRadius:RADIUS.lg,padding:"12px 14px",marginBottom:12,
                 display:"flex",gap:10,alignItems:"flex-start"}}>
-                <span style={{fontSize:FONT.title,flexShrink:0}}>✨</span>
+                <span style={{display:"flex",flexShrink:0,color:CL.ok}}><IconSparkles size={17} color={CL.ok}/></span>
                 <div>
                   <div style={{color:CL.ok,fontWeight:700,fontSize:FONT.body,marginBottom:2}}>{s.toastTitle}</div>
                   <div style={{color:"#9DCAB5",fontSize:FONT.label,wordBreak:"break-word"}}>{toast}</div>
@@ -2746,14 +2848,16 @@ export default function Inkore() {
             {/* Tabs */}
             <div style={{display:"flex",gap:5,background:CL.surface,borderRadius:RADIUS.lg,padding:4,
               marginBottom:12,border:BORDERS.default}}>
-              {[{k:"recent",label:`🕐 ${s.t0}`},{k:"top",label:`⭐ ${s.t1}`}].map(tb=>(
+              {[{k:"recent",label:s.t0,IconEl:IconClock},{k:"top",label:s.t1,IconEl:IconStar}].map(tb=>(
                 <button key={tb.k} onClick={()=>setTab(tb.k)}
                   style={{...btn0,flex:1,padding:isMobile?"11px 8px":"9px 12px",borderRadius:RADIUS.md,
                     background:tab===tb.k?CL.accentDim:"transparent",
                     border:tab===tb.k?`1px solid ${CL.accentBorder}`:"1px solid transparent",
                     color:tab===tb.k?CL.accent:CL.textMuted,
                     fontSize:isMobile?13:13,fontWeight:700,
-                    minHeight:isMobile?44:"auto",transition:TRANSITIONS.colorChange}}>
+                    minHeight:isMobile?44:"auto",transition:TRANSITIONS.colorChange,
+                    display:"flex",alignItems:"center",justifyContent:"center",gap:6}}>
+                  <tb.IconEl size={13} color={tab===tb.k?CL.accent:CL.textMuted}/>
                   {tb.label}
                 </button>
               ))}
@@ -2767,7 +2871,7 @@ export default function Inkore() {
               </div>
             ):displayed.length===0?(
               <div style={{textAlign:"center",padding:"48px 20px",color:CL.textMuted}}>
-                <div style={{fontSize:FONT.displayXl,marginBottom:12}}>🌱</div>
+                <div style={{display:"flex",justifyContent:"center",marginBottom:12}}><IconSprout size={38} color={CL.textMuted}/></div>
                 <div style={{fontSize:FONT.heading,marginBottom:5}}>{s.emH}</div>
                 <div style={{fontSize:FONT.body}}>{s.emP}</div>
               </div>
@@ -2823,7 +2927,7 @@ export default function Inkore() {
                             </span>
                             <span style={{fontSize:R.metaFont,color:CL.textMuted}}>· {timeAgo(p.timestamp,s)}</span>
                             {p.edited&&<span style={{fontSize:FONT.micro,color:CL.textMuted,fontStyle:"italic",display:"inline-flex",alignItems:"center",gap:3}}><IconPencil size={9} color={CL.textMuted}/> {s.editedLabel}</span>}
-                            {flagCount>0&&<span style={{fontSize:FONT.micro,color:CL.flag}}>🚩 {flagCount}</span>}
+                            {flagCount>0&&<span style={{fontSize:FONT.micro,color:CL.flag,display:"inline-flex",alignItems:"center",gap:3}}><IconFlag size={9} color={CL.flag}/> {flagCount}</span>}
                           </div>
                           <ActionMenuButton menuKey={`post-${p.id}`} text={p.text}
                             isOwner={!!ownedPosts[p.id]}
@@ -2854,8 +2958,10 @@ export default function Inkore() {
                         {resp?.trim()&&(
                           <div style={{borderInlineStart:`3px solid ${ci.color}`,paddingInlineStart:10,
                             paddingTop:4,paddingBottom:4,marginBottom:10,
-                            fontSize:FONT.label,color:CL.textSub,fontStyle:"italic",wordBreak:"break-word"}}>
-                            📝 {resp}
+                            fontSize:FONT.label,color:CL.textSub,fontStyle:"italic",wordBreak:"break-word",
+                            display:"flex",gap:6,alignItems:"flex-start"}}>
+                            <span style={{display:"flex",flexShrink:0,marginTop:2}}><IconFileText size={12} color={CL.textSub}/></span>
+                            <span>{resp}</span>
                           </div>
                         )}
 
